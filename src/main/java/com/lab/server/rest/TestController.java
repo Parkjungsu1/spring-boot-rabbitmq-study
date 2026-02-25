@@ -21,4 +21,10 @@ public class TestController {
         producer.send(req.getMessage());
         return ResponseEntity.ok("message success");
     }
+
+    @PostMapping("/direct/send")
+    public ResponseEntity<String> sendDirect(@RequestBody TestRequest req){
+        producer.directSend(req.getMessage());
+        return ResponseEntity.ok("message success");
+    }
 }
