@@ -1,9 +1,6 @@
 package com.lab.server.rabbitmq;
 
-import com.lab.server.config.RabbitConfig;
 import com.lab.server.config.RabbitDirectConfig;
-import com.lab.server.config.RabbitFanoutConfig;
-import com.lab.server.config.RabbitTopicConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -13,9 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class QueueListener {
-
-    private final RabbitFanoutConfig rabbitFanoutConfig;
-    private final RabbitTopicConfig rabbitTopicConfig;
 
     @RabbitListener(queues = "someQueue")
     public void processMessage(String message) {
@@ -35,5 +29,10 @@ public class QueueListener {
     @RabbitListener(queues = "${rabbitmq.topic.queue}")
     public void processTopicMessage(String message) {
         log.info("topic message: {}", message);
+    }
+
+    @RabbitListener(queues = "${rabbitmq.headers.queue}")
+    public void processHeadersMessage(String message) {
+        log.info("headers message: {}", message);
     }
 }

@@ -39,4 +39,10 @@ public class TestController {
         producer.topicSend(req.getMessage(), req.getKey());
         return ResponseEntity.ok("message success");
     }
+
+    @PostMapping
+    public ResponseEntity<String> sendHeaders(@RequestBody TestRequest req){
+        producer.headerSend(req.getMessage(), req.getKey());
+        return ResponseEntity.ok("message success");
+    }
 }

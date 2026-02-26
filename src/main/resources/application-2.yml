@@ -8,11 +8,13 @@ spring:
 rabbitmq:
   fanout:
     exchange: fanout.exchange
-    queue: fanout.queue2
+    queue: fanout.queue.2
   topic:
     exchange: topic.exchange
-    queue: topic.queue2
-    key: topic3.#
-
+    queue: topic.queue.2
+    key: topic2.#
+  headers:
+    exchange: header.exchange
+    queue: header.queue.2
 server:
   port: 8081
