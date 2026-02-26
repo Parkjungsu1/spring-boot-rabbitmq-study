@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@EnableRabbit
-@Component
 public class RabbitDirectConfig {
     public static final String QUEUE_NAME = "direct.queue";
     public static final String EXCHANGE_NAME = "direct.exchange";

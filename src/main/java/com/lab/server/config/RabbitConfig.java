@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@EnableRabbit
-@Component
 public class RabbitConfig {
     //참조 : https://docs.spring.io/spring-boot/reference/messaging/amqp.html
 

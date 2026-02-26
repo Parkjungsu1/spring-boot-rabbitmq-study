@@ -2,6 +2,7 @@ package com.lab.server.rabbitmq;
 
 import com.lab.server.config.RabbitConfig;
 import com.lab.server.config.RabbitDirectConfig;
+import com.lab.server.config.RabbitFanoutConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -20,5 +21,10 @@ public class QueueListener {
     @RabbitListener(queues = RabbitDirectConfig.QUEUE_NAME)
     public void processDirectMessage(String message) {
         log.info("direct message: {}", message);
+    }
+
+    @RabbitListener(queues = RabbitFanoutConfig.FANOUT_QUEUE)
+    public void processFanoutMessage(String message) {
+        log.info("fanout message: {}", message);
     }
 }

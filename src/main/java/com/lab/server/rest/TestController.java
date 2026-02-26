@@ -27,4 +27,10 @@ public class TestController {
         producer.directSend(req.getMessage());
         return ResponseEntity.ok("message success");
     }
+
+    @PostMapping("/fanout/send")
+    public ResponseEntity<String> sendFanout(@RequestBody TestRequest req){
+        producer.fanoutSend(req.getMessage());
+        return ResponseEntity.ok("message success");
+    }
 }

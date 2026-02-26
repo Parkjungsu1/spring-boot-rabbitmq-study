@@ -1,7 +1,7 @@
 package com.lab.server.rabbitmq;
 
-import com.lab.server.config.RabbitConfig;
 import com.lab.server.config.RabbitDirectConfig;
+import com.lab.server.config.RabbitFanoutConfig;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Component;
@@ -23,5 +23,9 @@ public class Producer {
 
     public void directSend(String message) {
         this.amqpTemplate.convertAndSend(RabbitDirectConfig.EXCHANGE_NAME, RabbitDirectConfig.ROUTING_KEY, message);
+    }
+
+    public void fanoutSend(String message) {
+        this.amqpTemplate.convertAndSend(RabbitFanoutConfig.FANOUT_EXCHANGE, null, message);
     }
 }
