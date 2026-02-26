@@ -5,5 +5,14 @@ spring:
     username : guest
     password: guest
 
+rabbitmq:
+  fanout:
+    exchange: fanout.exchange
+    queue: fanout.queue2
+  topic:
+    exchange: topic.exchange
+    queue: topic.queue2
+    key: topic3.#
+
 server:
   port: 8081

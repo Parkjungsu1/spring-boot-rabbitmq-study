@@ -33,4 +33,10 @@ public class TestController {
         producer.fanoutSend(req.getMessage());
         return ResponseEntity.ok("message success");
     }
+
+    @PostMapping("/topic/send")
+    public ResponseEntity<String> sendTopic(@RequestBody TestRequest req){
+        producer.topicSend(req.getMessage(), req.getKey());
+        return ResponseEntity.ok("message success");
+    }
 }

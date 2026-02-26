@@ -4,13 +4,12 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 @Configuration
 public class RabbitDirectConfig {
+    //exchange와 routing key가 일치해야 보내짐.
     public static final String QUEUE_NAME = "direct.queue";
     public static final String EXCHANGE_NAME = "direct.exchange";
     public static final String ROUTING_KEY = "direct.key";
@@ -18,7 +17,7 @@ public class RabbitDirectConfig {
     // 1. direct Queue setting
     @Bean
     public Queue directQueue() {
-        return new Queue(QUEUE_NAME, false);
+        return new Queue(QUEUE_NAME, false, false, true);
     }
 
     // 2. direct exchange 등록

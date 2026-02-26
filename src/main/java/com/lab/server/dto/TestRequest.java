@@ -7,4 +7,5 @@ import lombok.Setter;
 @Getter
 public class TestRequest {
     private String message;
+    private String key;
 }
